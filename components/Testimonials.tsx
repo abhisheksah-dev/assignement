@@ -1,22 +1,32 @@
-// components/Testimonials.tsx
-import React from "react";
-
 const data = [
-  {name: "Suman", text: "This product saved our team hours each week."},
-  {name: "Riya", text: "Super easy to use and great support."}
+  { name: "Sarah Chen", role: "CEO, TechCorp", text: "This solution saved our team hours each week.", avatar: "SC" },
+  { name: "Marcus Johnson", role: "Product Lead", text: "Beautifully designed and intuitive.", avatar: "MJ" },
+  { name: "Elena Rodriguez", role: "Founder", text: "Exactly what we needed — great support.", avatar: "ER" },
 ];
 
-export default function Testimonials(){
+export default function Testimonials() {
   return (
-    <section className="py-16 px-6 md:px-16 bg-gray-50">
-      <h2 className="text-3xl font-semibold mb-6">What customers say</h2>
-      <div className="flex flex-col md:flex-row gap-6">
-        {data.map((t)=> (
-          <blockquote key={t.name} className="p-6 bg-white rounded-lg shadow-sm">
-            <p className="text-gray-700">“{t.text}”</p>
-            <footer className="mt-4 text-sm text-gray-500">— {t.name}</footer>
-          </blockquote>
-        ))}
+    <section id="testimonials" className="py-20">
+      <div className="site-container">
+        <div className="text-center mb-8">
+          <p className="text-accent text-sm font-semibold mb-2">Success Stories</p>
+          <h2 className="text-2xl md:text-3xl font-bold">Loved by teams everywhere</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {data.map((t) => (
+            <div key={t.name} className="p-6 bg-neutral-light rounded-2xl border border-neutral-medium">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center font-semibold">{t.avatar}</div>
+                <div>
+                  <p className="font-semibold">{t.name}</p>
+                  <p className="text-sm text-neutral-muted">{t.role}</p>
+                </div>
+              </div>
+              <p className="text-neutral-muted">&quot;{t.text}&quot;</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

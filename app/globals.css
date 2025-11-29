@@ -2,27 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Keep variables (you already had many). Keep only what's needed for theme mapping */
+:root{
+  --bg: #ffffff;
+  --fg: #0b1220;
+  --accent: #2563eb;
+  --accent-600: #1e4ed8;
+  --muted: #6b7280;
+  --neutral-100: #f8fafc;
+  --neutral-200: #eef2f7;
+  --card: #ffffff;
+  --radius: 1rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Simple base layer */
+@layer base{
+  html, body {
+    @apply antialiased;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  a { @apply text-inherit no-underline; }
+  button { @apply cursor-pointer; }
+
+  /* site container helper */
+  .site-container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem; /* px-5 */
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 768px){
+    .site-container { padding-left: 2.5rem; padding-right: 2.5rem; } /* md:px-10 */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* small visual helpers */
+.hero-decor {
+  position: absolute;
+  filter: blur(48px);
+  opacity: 0.16;
+  pointer-events: none;
 }
